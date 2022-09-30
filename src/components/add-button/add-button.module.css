@@ -1,0 +1,22 @@
+.container {
+  cursor: pointer;
+  background-color: #4DB71B;
+  border-radius: 30px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.text {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 24px;
+  color: #FFF;
+}
+
+.container:hover {
+  background-color: #388813;
+  color: #DEDEDE;
+}

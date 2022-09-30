@@ -1,0 +1,46 @@
+.toast {
+  pointer-events: all;
+  position: relative;
+  background-color: #FFF;
+  border-radius: 30px;
+  height: 80px;
+  width: 500px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appear {
+  animation: appear 0.2s linear;
+}
+.disappear {
+  animation: disappear 0.2s linear;
+}
+
+.text {
+  font-size: 24px;
+  font-weight: 600;
+  align-self: center;
+}
+
+.icon {
+  position: absolute;
+  right: 30px;
+}
+@keyframes appear {
+  from {
+    transform: translateY(-70px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes disappear {
+  to {
+    transform: translateY(-140px);
+  }
+  from {
+    transform: translateY(0);
+  }
+}

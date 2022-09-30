@@ -1,0 +1,47 @@
+.container {
+  pointer-events: all;
+    position: relative;
+    background-color: #FFF;
+    border-radius: 30px;
+    height: 80px;
+    width: 500px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    
+  }
+.appear {
+  animation: appear 0.2s linear;
+}
+.disappear {
+  animation: disappear 0.2s linear;
+}
+  
+  .code {
+    align-self: center;
+  }
+  
+  .icon {
+    position: absolute;
+    right: 30px;
+  }
+
+@keyframes appear {
+  from {
+    transform: translateY(70px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes disappear {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(140px);
+  }
+}

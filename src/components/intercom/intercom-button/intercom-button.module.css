@@ -1,0 +1,44 @@
+.container {
+  cursor: pointer;
+  user-select: none;
+  background-color: #F0F0F0;
+  height: 100px;
+  width: 100px;
+  border-radius: 30px;
+  display: flex;
+  position: relative;
+}
+
+.container:nth-child(8) {
+  grid-row: 2 / 4 ;
+  grid-column: 4 / 4 ;
+  height: 215px;
+}
+
+.container:nth-child(15) {
+  
+  background-color: #8266BD;
+}
+
+
+.key {
+  color: #777777;
+  margin: auto;
+  font-size: 50px;
+  font-weight: 400;
+  font-family: 'Inter';
+}
+.icon {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  height: 48px;
+  width: 48px;
+}
+
+.container:hover {
+  background-color: #DAD9D9;
+}
+.container:nth-child(15):hover {
+  background-color: #5B4885;
+}

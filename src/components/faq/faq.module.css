@@ -1,0 +1,47 @@
+.faqContainer {
+  text-align: start;
+  background-color: #FFF;
+  border-radius: 30px;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
+.appear {
+  animation: appear 0.2s linear;
+}
+.disappear {
+  animation: disappear 0.2s linear;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.text {
+  margin: 0;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 16px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes disappear {
+  to {
+    opacity: 0;
+  }
+  from {
+    opacity: 1;
+  }
+}

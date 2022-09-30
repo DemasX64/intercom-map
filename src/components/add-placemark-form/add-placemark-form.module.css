@@ -1,0 +1,83 @@
+.container {
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFF;
+  border-radius: 30px;
+  padding: 30px;
+  animation: appear 0.2s linear;
+  gap: 15px;
+}
+
+.appear {
+  animation: appear 0.2s linear;
+}
+.disappear {
+  animation: disappear 0.2s linear;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Inter';
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.input__title {
+  text-align: start;
+  font-family: 'Inter';
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.input__hint {
+  text-align: start;
+  font-family: 'Inter';
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+.input__fields {
+  margin: auto;
+  margin-top: 5px;
+  display: flex;
+  gap: 15px;
+}
+.input__field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 40px;
+  background-color: #F0F0F0;
+  border-radius: 30px;
+}
+.input__text {  
+  margin: 0;
+  font-family: 'Inter';
+  font-weight: 600;
+  color: #777676;
+}
+
+@keyframes appear {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@keyframes disappear {
+  to {
+    transform: translateX(-600px);
+  }
+  from {
+    transform: translateX(0px);
+  }
+}

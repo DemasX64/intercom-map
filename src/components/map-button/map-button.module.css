@@ -1,0 +1,22 @@
+.container {
+  pointer-events: all;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  background-color: #FFF;
+  border-radius: 30px;
+  position: relative;
+  transition: 0.5s;
+}
+
+.icon {
+  top: 22px;
+  left: 22px;
+  position: absolute;
+  width: 36px;
+  height: 36px;
+}
+
+.container:hover {
+  background-color: #F0F0F0;
+}

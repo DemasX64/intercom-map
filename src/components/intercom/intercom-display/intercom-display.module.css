@@ -1,0 +1,16 @@
+.container {
+  height: 80px;
+  border-radius: 30px;
+  background-color: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  margin: 0;
+  color: #777777;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Inter';
+}

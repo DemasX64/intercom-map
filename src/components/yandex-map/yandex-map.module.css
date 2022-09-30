@@ -1,0 +1,39 @@
+.map {
+    flex:1;
+    height: 100vh;
+}
+
+.container {
+    pointer-events: none;
+    top: 0;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3,33.3%);
+    /* display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 80px; */
+    height: calc(100vh - 60px);
+    width: calc(100vw - 60px);
+    margin: 30px;
+}
+.popUpsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.formContainer {
+    margin: 0 auto 0 0;
+}
+.mapButtonsContainer {
+    display: flex;
+    gap: 15px;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}

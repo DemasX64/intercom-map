@@ -1,0 +1,26 @@
+.button{
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: #FFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 10px;
+}
+
+.button:hover {
+    transition: 0.5s;
+    background-color:  #FF4500;
+}
+
+.text {
+    font-size: large;
+    font-weight: bold;
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+}
