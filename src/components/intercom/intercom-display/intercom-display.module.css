@@ -14,3 +14,13 @@
   font-weight: 600;
   font-family: 'Inter';
 }
+
+@media (max-width:1919px) {
+  .container {
+    height: 60px;
+    border-radius: 20px;
+  }
+  .text {
+    font-size: 20px;
+  }
+}

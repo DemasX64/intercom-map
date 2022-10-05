@@ -20,3 +20,13 @@
   background-color: #388813;
   color: #DEDEDE;
 }
+
+@media (max-width:1919px) {
+  .container {
+    border-radius: 20px;
+    height: 60px;
+  }
+  .text {
+    font-size: 20px;
+  }
+}

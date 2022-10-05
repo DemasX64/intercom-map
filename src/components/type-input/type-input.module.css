@@ -43,3 +43,21 @@
 .input__text.active {
   color: #F0F0F0;
 }
+@media (max-width:1919px){
+.input__title {
+  font-size: 14px;
+}
+.input__hint {
+  font-size: 14px;
+}
+.input__fields {
+  gap: 10px;
+}
+.input__field {
+  height: 35px;
+  border-radius: 30px;
+}
+.input__text {  
+  font-size: 14px;
+}
+}

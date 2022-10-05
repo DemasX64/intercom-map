@@ -81,3 +81,31 @@
     transform: translateX(0px);
   }
 }
+
+@media (max-width:1919px) {
+  .container {
+    border-radius: 20px;
+    padding: 20px;
+    gap: 10px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .input__title {
+    font-size: 14px;
+  }
+  .input__hint {
+    font-size: 14px;
+  }
+  .input__fields {
+    margin-top: 5px;
+    gap: 10px;
+  }
+  .input__field {
+    height: 35px;
+  }
+  .input__text {  
+    font-size: 14px;
+  }
+  
+}

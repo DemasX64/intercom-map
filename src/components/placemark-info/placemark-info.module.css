@@ -45,3 +45,17 @@
     transform: translateY(140px);
   }
 }
+
+@media (max-width: 1919px) {
+  .container {
+      border-radius: 20px;
+      height: 60px;
+      width: 400px;
+      font-size: 20px;
+    }
+  .icon {
+    position: absolute;
+    right: 20px;
+  }
+  
+}

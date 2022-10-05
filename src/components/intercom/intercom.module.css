@@ -3,3 +3,10 @@
   grid-template-columns: repeat(4,100px);
   gap: 15px;
 }
+
+@media (max-width: 1919px) {
+  .keyboard {
+    gap: 10px;
+    grid-template-columns: repeat(4,80px);
+  }
+}

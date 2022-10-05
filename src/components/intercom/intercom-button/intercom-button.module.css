@@ -20,7 +20,6 @@
   background-color: #8266BD;
 }
 
-
 .key {
   color: #777777;
   margin: auto;
@@ -41,4 +40,24 @@
 }
 .container:nth-child(15):hover {
   background-color: #5B4885;
+}
+
+@media (max-width: 1919px) {
+  .container {
+    height: 80px;
+    width: 80px;
+    border-radius: 20px;
+  }
+  .container:nth-child(8) {
+    height: 170px;
+  }
+.key {
+  font-size: 40px;
+}
+.icon {
+  top: 22px;
+  left: 22px;
+  height: 36px;
+  width: 36px;
+}
 }

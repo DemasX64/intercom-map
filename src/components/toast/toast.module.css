@@ -44,3 +44,18 @@
     transform: translateY(0);
   }
 }
+
+
+@media (max-width:1919px) {
+  .toast {
+    border-radius: 20px;
+    height: 60px;
+    width: 400px;
+  }
+  .text {
+    font-size: 20px;
+  }
+  .icon {
+    right: 20px;
+  }
+}

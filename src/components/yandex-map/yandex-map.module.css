@@ -9,10 +9,6 @@
     position: absolute;
     display: grid;
     grid-template-columns: repeat(3,33.3%);
-    /* display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    gap: 80px; */
     height: calc(100vh - 60px);
     width: calc(100vw - 60px);
     margin: 30px;
@@ -36,4 +32,12 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 15px;
+}
+
+@media (max-width: 1919px) {
+    .container {
+        height: calc(100vh - 40px);
+        width: calc(100vw - 40px);
+        margin: 20px;
+    }
 }
