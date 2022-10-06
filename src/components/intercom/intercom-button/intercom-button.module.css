@@ -2,8 +2,8 @@
   cursor: pointer;
   user-select: none;
   background-color: #F0F0F0;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border-radius: 30px;
   display: flex;
   position: relative;
@@ -12,7 +12,7 @@
 .container:nth-child(8) {
   grid-row: 2 / 4 ;
   grid-column: 4 / 4 ;
-  height: 215px;
+  height: 170px;
 }
 
 .container:nth-child(15) {
@@ -23,16 +23,16 @@
 .key {
   color: #777777;
   margin: auto;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 400;
   font-family: 'Inter';
 }
 .icon {
   position: absolute;
-  top: 24px;
-  left: 24px;
-  height: 48px;
-  width: 48px;
+  top: 22px;
+  left: 22px;
+  height: 36px;
+  width: 36px;
 }
 
 .container:hover {
@@ -44,20 +44,20 @@
 
 @media (max-width: 1919px) {
   .container {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     border-radius: 20px;
   }
   .container:nth-child(8) {
-    height: 170px;
+    height: 130px;
   }
 .key {
-  font-size: 40px;
+  font-size: 30px;
 }
 .icon {
-  top: 22px;
-  left: 22px;
-  height: 36px;
-  width: 36px;
+  top: 18px;
+  left: 18px;
+  height: 24px;
+  width: 24px;
 }
 }

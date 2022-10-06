@@ -1,12 +1,13 @@
 .keyboard {
   display: grid;
-  grid-template-columns: repeat(4,100px);
-  gap: 15px;
+  grid-template-columns: repeat(4,80px);
+  gap: 10px;
 }
 
 @media (max-width: 1919px) {
   .keyboard {
     gap: 10px;
-    grid-template-columns: repeat(4,80px);
+    grid-template-columns: repeat(4,60px);
+    margin: 0px 20px;
   }
 }

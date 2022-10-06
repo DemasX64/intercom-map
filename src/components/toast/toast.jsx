@@ -4,9 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hideToast, setToastDisappear } from '../../services/reducers/addPlacemarkForm';
 import styles from './toast.module.css'
 
-function Toast() {
+function Toast(props) {
   const dispatch = useDispatch()
   const [percent, setPercent] = useState(100)
+
+  
+
   const animation = useSelector((state) => state.addPlacemarkForm.toastAnimation)
   useEffect(() => {
     let timer = setInterval(() => {

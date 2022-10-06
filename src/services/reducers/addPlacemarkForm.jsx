@@ -1,14 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-
-const addPlacemark = createAsyncThunk(
+export const addPlacemark = createAsyncThunk(
   'addPlacemarkForm/addPlacemark',
-  () => {
-
+  async () => {
+    await new Promise((resolve) => setTimeout(resolve, 3000))
   }
 )
 
 const initialState = { 
+
+  requestLoading:false,
+
   isFormShow: false,
   animation: 'appear',
 
@@ -58,6 +60,23 @@ const addPlacemarkFormSlice = createSlice({
       state.type = action.payload
     }
   },
+  extraReducers: (builder) => {
+    builder.addCase(addPlacemark.pending, (state, action) => {
+      state.requestLoading = true;
+    })
+    builder.addCase(addPlacemark.fulfilled, (state, action) => {
+      state.requestLoading = false;
+      state.isToastShow = true;
+      state.animation = 'appear';
+      state.isFormShow = false;
+    })
+    builder.addCase(addPlacemark.rejected, (state, action) => {
+      state.requestLoading = false;
+      state.isToastShow = true;
+      state.animation = 'appear';
+      state.isFormShow = false;
+    })
+  }
 })
 
 export const { showForm, hideForm, setDisappear, addChar, removeChar, setCoordinates,showToast, hideToast, setToastDisappear, changeType } = addPlacemarkFormSlice.actions

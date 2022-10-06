@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
 import Button from '../button/button.js';
 import styles from './yandex-map.module.css'
@@ -11,7 +11,7 @@ import faqIcon from '../../assets/icons/faq.svg'
 import addIcon from '../../assets/icons/add.svg'
 import FAQ from '../faq/faq.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCode, showInfo } from '../../services/reducers/placemarkInfo.jsx';
+import { addPlacemarkToMap, getPlacemarks, setCode, showInfo } from '../../services/reducers/placemarkInfo.jsx';
 import { hideFAQ, setDisappear, showFAQ } from '../../services/reducers/faq.jsx';
 import { setCoordinates, showForm } from '../../services/reducers/addPlacemarkForm.jsx';
 
@@ -28,25 +28,21 @@ const YandexMap = () => {
     const isInfoShow =  useSelector((state=>state.placemarkInfo.isInfoShow))
     const isFormShow =  useSelector((state=>state.addPlacemarkForm.isFormShow))
     const isToastShow =  useSelector((state=>state.addPlacemarkForm.isToastShow))
-    const coordinates =  useSelector((state=>state.addPlacemarkForm.coordinates))
+    const coordinates =  useSelector((state=>state.addPlacemarkForm.coordinates)) 
+    const placemarks = useSelector((state) => state.placemarkInfo.placemarks)
+    const currentPlacemarkID = useSelector((state) => state.placemarkInfo.placemarkID)
 
-   // const 
-
-    const[placemarks, setPlacemarks] = useState([
-        { pos: [55.684758, 37.738521], code: '1234' },
-        { pos: [53.684758, 37.738521], code: '123434' },
-        { pos: [54.684758, 37.738521], code: '123344' },
-    ]);
-
-    const [current, setCurrent] = useState('');
+    useEffect(()=>{
+        dispatch(getPlacemarks())
+    },[])
 
     function addObject(e){
         dispatch(setCoordinates(e.get("coords")))
     }
 
     const showInfoHandler = (param) => (event) => {
-      dispatch(showInfo())
-       dispatch(setCode(param));
+      dispatch(showInfo(param.id))
+       dispatch(setCode(param.code));
     }
     const showFAQHandler = (event) => {
         dispatch(showFAQ())
@@ -60,25 +56,17 @@ const YandexMap = () => {
     const showFormHandler = (event) => {
         dispatch(showForm())
     }
-    // return ( 
-    //     <YMaps>  
-    //         <Map onClick={addObject} className={styles.map} defaultState={defaultMapState}>
-    //             {placemarks.map((placemark) => { 
-    //                  return <Placemark geometry={placemark.pos} onClick={showInfo(placemark.code)}/>
-    //             })}
-    //         </Map>
-    //         <div className={styles.addPlacemarkContainer}>
-    //             <AddPlacemarkForm/>
-    //             <Button text='Добавить' icon={addIcon}></Button>
-    //         </div>
-    //         {isPlacemarkInfoOpen && <PlacemarkInfo code={current}/>}
-    //     </YMaps>
-    // );
+  
+    const getPlacemarkColor = (id) => {
+       return id===currentPlacemarkID? { iconColor: '#5B4885'}:{iconColor : '#4996F8'};
+    }
+
     return ( 
         <YMaps>  
             <Map onClick={addObject} className={styles.map} defaultState={defaultMapState}>
                 {placemarks.map((placemark) => { 
-                     return <Placemark geometry={placemark.pos} onClick={showInfoHandler(placemark.code)}/>
+                     const {id, pos, code } = placemark;
+                     return <Placemark key={id} options={getPlacemarkColor(id)} geometry={pos} onClick={showInfoHandler({code,id})}/>
                 })}
                 {isFormShow && <Placemark geometry={coordinates} options={{ 
                     preset: "islands#circleDotIcon",
@@ -103,7 +91,7 @@ const YandexMap = () => {
                     <div>
                         {isToastShow && <Toast/>}
                     </div>
-                    {isInfoShow && <PlacemarkInfo code={current}/>}
+                    {isInfoShow && <PlacemarkInfo/>}
                 </div>
                 <div className={styles.rightContainer}>
                     <div className={styles.mapButtonsContainer}>

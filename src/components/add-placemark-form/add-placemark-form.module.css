@@ -59,6 +59,9 @@
   border-radius: 30px;
 }
 .input__text {  
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
   margin: 0;
   font-family: 'Inter';
   font-weight: 600;
