@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
 import Button from '../button/button.js';
 import styles from './yandex-map.module.css'
@@ -11,9 +11,12 @@ import faqIcon from '../../assets/icons/faq.svg'
 import addIcon from '../../assets/icons/add.svg'
 import FAQ from '../faq/faq.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPlacemarkToMap, getPlacemarks, setCode, showInfo } from '../../services/reducers/placemarkInfo.jsx';
-import { hideFAQ, setDisappear, showFAQ } from '../../services/reducers/faq.jsx';
+import { getPlacemarks, setCode, showInfo } from '../../services/reducers/placemarkInfo.jsx';
+import { hideFAQ, showFAQ } from '../../services/reducers/faq.jsx';
 import { setCoordinates, showForm } from '../../services/reducers/addPlacemarkForm.jsx';
+
+import { AnimatePresence } from "framer-motion"
+
 
 const defaultMapState = {
     center: [59.938567244979545, 30.315890079017883],
@@ -49,8 +52,6 @@ const YandexMap = () => {
     }
 
     const hideFAQHandler = async (event) => {
-        dispatch(setDisappear())
-        await new Promise(r => setTimeout(r, 200))
         dispatch(hideFAQ())
     }
     const showFormHandler = (event) => {
@@ -85,20 +86,32 @@ const YandexMap = () => {
             </Map>
             <div className={styles.container}>
                 <div className={styles.formContainer}>
+                <AnimatePresence>
                     {isFormShow && <AddPlacemarkForm/>}
+                </AnimatePresence>
                 </div>
                 <div className={styles.popUpsContainer}>
                     <div>
+                        <AnimatePresence>
+
                         {isToastShow && <Toast/>}
+                        </AnimatePresence>
+
                     </div>
-                    {isInfoShow && <PlacemarkInfo/>}
+                    <AnimatePresence>
+                        {isInfoShow && <PlacemarkInfo/>}
+                    </AnimatePresence>
+                    
                 </div>
                 <div className={styles.rightContainer}>
                     <div className={styles.mapButtonsContainer}>
                         <MapButton icon={addIcon} onClick={showFormHandler}/>
                         <MapButton icon={faqIcon} onMouseEnter={showFAQHandler} onMouseLeave={hideFAQHandler}/>
                     </div>
-                    {isFAQShow && <FAQ />}
+                    <AnimatePresence>
+                     {isFAQShow && <FAQ />}
+
+                    </AnimatePresence>
                 </div>
                 
             </div>

@@ -1,27 +1,27 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { hideForm, setDisappear, showForm } from '../../services/reducers/addPlacemarkForm';
+import { hideForm } from '../../services/reducers/addPlacemarkForm';
 import AddButton from '../add-button/add-button';
 import CloseButton from '../close-button/close-button';
 import Intercom from '../intercom/intercom'
 import TypeInput from '../type-input/type-input';
 import styles from './add-placemark-form.module.css'
 
+import { motion } from "framer-motion"
+
+
 function AddPlacemarkForm() {
 
     const dispatch = useDispatch()
 
     const closeForm = async () => {
-      dispatch(setDisappear());
-      await new Promise(r => setTimeout(r, 200))
-
       dispatch(hideForm())
     }
 
     const coordinates = useSelector((state) => state.addPlacemarkForm.coordinates)
 
-    const animation = useSelector((state) => state.addPlacemarkForm.animation )
     return (
-        <div className={`${styles.container} ${animation==='appear'?styles.appear:styles.disappear}`}>
+        <motion.div transition={{duration:0.2}}  initial={{ x: -500 }}
+        animate={{ x:0 }} exit={{x:-500}} className={styles.container}>
             <div className={styles.header}>
                 <p className={styles.title}>Добавление нового кода</p>
                 <CloseButton onClick={closeForm}/>
@@ -52,7 +52,7 @@ function AddPlacemarkForm() {
             <TypeInput/>
             <Intercom/>
             <AddButton/>
-        </div>
+        </motion.div>
      );
 }
 

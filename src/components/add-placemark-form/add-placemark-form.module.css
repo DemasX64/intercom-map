@@ -5,15 +5,7 @@
   background-color: #FFF;
   border-radius: 30px;
   padding: 30px;
-  animation: appear 0.2s linear;
   gap: 15px;
-}
-
-.appear {
-  animation: appear 0.2s linear;
-}
-.disappear {
-  animation: disappear 0.2s linear;
 }
 
 .header {
@@ -66,23 +58,6 @@
   font-family: 'Inter';
   font-weight: 600;
   color: #777676;
-}
-
-@keyframes appear {
-  from {
-    transform: translateX(-300px);
-  }
-  to {
-    transform: translateX(0px);
-  }
-}
-@keyframes disappear {
-  to {
-    transform: translateX(-600px);
-  }
-  from {
-    transform: translateX(0px);
-  }
 }
 
 @media (max-width:1919px) {

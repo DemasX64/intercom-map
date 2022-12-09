@@ -13,12 +13,6 @@
     font-weight: bold;
     
   }
-.appear {
-  animation: appear 0.2s linear;
-}
-.disappear {
-  animation: disappear 0.2s linear;
-}
   
   .code {
     align-self: center;
@@ -28,23 +22,6 @@
     position: absolute;
     right: 30px;
   }
-
-@keyframes appear {
-  from {
-    transform: translateY(70px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-@keyframes disappear {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(140px);
-  }
-}
 
 @media (max-width: 1919px) {
   .container {

@@ -12,14 +12,12 @@ const initialState = {
   requestLoading:false,
 
   isFormShow: false,
-  animation: 'appear',
 
   coordinates:['-','-'],
   type:'Парадная',
   code:'',
 
   isToastShow:false,
-  toastAnimation:'appear',
 }
 
 const addPlacemarkFormSlice = createSlice({
@@ -30,18 +28,13 @@ const addPlacemarkFormSlice = createSlice({
       state.isFormShow = true;
     },
     hideForm(state) {
-      state.animation = 'appear';
       state.isFormShow = false;
     },
     showToast(state) {
       state.isToastShow = true;
     },
     hideToast(state) {
-      //state.animation = 'appear';
       state.isToastShow = false;
-    },
-    setDisappear(state) {
-      state.animation = 'disappear';
     },
     addChar(state, action) {
       state.code += action.payload;
@@ -52,9 +45,6 @@ const addPlacemarkFormSlice = createSlice({
     },
     setCoordinates(state, action) {
       state.coordinates = action.payload
-    },
-    setToastDisappear(state) {
-      state.toastAnimation = 'disappear';
     },
     changeType(state, action) {
       state.type = action.payload
@@ -67,17 +57,15 @@ const addPlacemarkFormSlice = createSlice({
     builder.addCase(addPlacemark.fulfilled, (state, action) => {
       state.requestLoading = false;
       state.isToastShow = true;
-      state.animation = 'appear';
       state.isFormShow = false;
     })
     builder.addCase(addPlacemark.rejected, (state, action) => {
       state.requestLoading = false;
       state.isToastShow = true;
-      state.animation = 'appear';
       state.isFormShow = false;
     })
   }
 })
 
-export const { showForm, hideForm, setDisappear, addChar, removeChar, setCoordinates,showToast, hideToast, setToastDisappear, changeType } = addPlacemarkFormSlice.actions
+export const { showForm, hideForm, addChar, removeChar, setCoordinates,showToast, hideToast, changeType } = addPlacemarkFormSlice.actions
 export default addPlacemarkFormSlice.reducer
