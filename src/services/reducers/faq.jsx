@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit'
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { 
+const initialState = {
   isFAQShow: false,
-}
+};
 
 const faqSlice = createSlice({
   name: 'faq',
@@ -15,7 +16,7 @@ const faqSlice = createSlice({
       state.isFAQShow = false;
     },
   },
-})
+});
 
-export const { showFAQ, hideFAQ } = faqSlice.actions
-export default faqSlice.reducer
+export const { showFAQ, hideFAQ } = faqSlice.actions;
+export default faqSlice.reducer;

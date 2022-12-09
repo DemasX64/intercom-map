@@ -1,15 +1,20 @@
-import closeIcon from '../../assets/icons/close.svg'
-import styles from './close-button.module.css'
+import React from 'react';
+import PropTypes from 'prop-types';
+import closeIcon from '../../assets/icons/close.svg';
+import styles from './close-button.module.css';
 
-function CloseButton(props) {
+const CloseButton = (props) => {
+  const { onClick } = props;
 
-  const {onClick} = props
-
-  return ( 
-    <div className={styles.container} onClick={()=>onClick()}>
-      <img className={styles.icon} src={closeIcon} alt='Закрыть'/>
-    </div>
+  return (
+    <button type="button" className={styles.container} onClick={() => onClick()}>
+      <img className={styles.icon} src={closeIcon} alt="Закрыть" />
+    </button>
   );
-}
+};
+
+CloseButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default CloseButton;

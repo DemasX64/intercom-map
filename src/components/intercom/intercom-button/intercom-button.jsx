@@ -1,26 +1,32 @@
-import { useDispatch } from 'react-redux'
-import { addChar, removeChar } from '../../../services/reducers/addPlacemarkForm'
-import styles from './intercom-button.module.css'
+import { useDispatch } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { addChar, removeChar } from '../../../services/reducers/addPlacemarkForm';
+import styles from './intercom-button.module.css';
 
-function IntercomButton(props) {
-
-  const dispatch = useDispatch()
-  const {value, icon} =  props
+const IntercomButton = (props) => {
+  const dispatch = useDispatch();
+  const { value, icon } = props;
 
   const onClick = () => {
     if (value) {
-      dispatch(addChar(value))
+      dispatch(addChar(value));
+    } else {
+      dispatch(removeChar());
     }
-    else {
-      dispatch(removeChar())
-    }
-  }
+  };
 
-  return ( 
-  <div className={styles.container} onClick={onClick}>
-    {value && <p className={styles.key}>{value}</p>}
-    {icon && <img className={styles.icon} src={icon}/>}
-  </div> );
-}
+  return (
+    <button type="button" className={styles.container} onClick={onClick}>
+      {value && <p className={styles.key}>{value}</p>}
+      {icon && <img className={styles.icon} src={icon} alt="" />}
+    </button>
+  );
+};
+
+IntercomButton.propTypes = {
+  value: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+};
 
 export default IntercomButton;

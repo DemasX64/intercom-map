@@ -1,6 +1,7 @@
 .container {
   cursor: pointer;
   user-select: none;
+  border: none;
   background-color: #F0F0F0;
   height: 80px;
   width: 80px;

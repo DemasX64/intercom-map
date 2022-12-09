@@ -1,4 +1,5 @@
 .container {
+  border:none;
   cursor: pointer;
   background-color: #4DB71B;
   border-radius: 30px;

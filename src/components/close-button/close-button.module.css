@@ -1,5 +1,6 @@
 .container {
   cursor: pointer;
+  border: none;
   user-select: none;
   pointer-events: all;
   position: relative;

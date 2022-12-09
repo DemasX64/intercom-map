@@ -1,24 +1,26 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+/* eslint-disable no-promise-executor-return */
+/* eslint-disable no-param-reassign */
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const addPlacemark = createAsyncThunk(
   'addPlacemarkForm/addPlacemark',
   async () => {
-    await new Promise((resolve) => setTimeout(resolve, 3000))
-  }
-)
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+  },
+);
 
-const initialState = { 
+const initialState = {
 
-  requestLoading:false,
+  requestLoading: false,
 
   isFormShow: false,
 
-  coordinates:['-','-'],
-  type:'Парадная',
-  code:'',
+  coordinates: ['-', '-'],
+  type: 'Парадная',
+  code: '',
 
-  isToastShow:false,
-}
+  isToastShow: false,
+};
 
 const addPlacemarkFormSlice = createSlice({
   name: 'addPlacemarkForm',
@@ -40,32 +42,33 @@ const addPlacemarkFormSlice = createSlice({
       state.code += action.payload;
     },
     removeChar(state) {
-      if(state.code)
-        state.code = state.code.slice(0, -1);
+      if (state.code) { state.code = state.code.slice(0, -1); }
     },
     setCoordinates(state, action) {
-      state.coordinates = action.payload
+      state.coordinates = action.payload;
     },
     changeType(state, action) {
-      state.type = action.payload
-    }
+      state.type = action.payload;
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(addPlacemark.pending, (state, action) => {
+    builder.addCase(addPlacemark.pending, (state) => {
       state.requestLoading = true;
-    })
-    builder.addCase(addPlacemark.fulfilled, (state, action) => {
+    });
+    builder.addCase(addPlacemark.fulfilled, (state) => {
       state.requestLoading = false;
       state.isToastShow = true;
       state.isFormShow = false;
-    })
-    builder.addCase(addPlacemark.rejected, (state, action) => {
+    });
+    builder.addCase(addPlacemark.rejected, (state) => {
       state.requestLoading = false;
       state.isToastShow = true;
       state.isFormShow = false;
-    })
-  }
-})
+    });
+  },
+});
 
-export const { showForm, hideForm, addChar, removeChar, setCoordinates,showToast, hideToast, changeType } = addPlacemarkFormSlice.actions
-export default addPlacemarkFormSlice.reducer
+export const {
+  showForm, hideForm, addChar, removeChar, setCoordinates, showToast, hideToast, changeType,
+} = addPlacemarkFormSlice.actions;
+export default addPlacemarkFormSlice.reducer;
