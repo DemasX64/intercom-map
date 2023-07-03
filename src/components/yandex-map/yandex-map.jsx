@@ -52,7 +52,7 @@ const YandexMap = () => {
   };
 
   const showInfoHandler = (param) => () => {
-    dispatch(showInfo(param._id));
+    dispatch(showInfo(param.id));
     dispatch(setCode(param.code));
   };
   const showFAQHandler = () => {
@@ -67,6 +67,7 @@ const YandexMap = () => {
   };
 
   const getPlacemarkIcon = (id, type) => {
+    console.log(id, type, currentPlacemarkID)
     if (id === currentPlacemarkID && type === 'Gate') {
       return gatePlacemarkSelected;
     }
@@ -92,7 +93,12 @@ const YandexMap = () => {
           return (
             <Placemark
               key={id}
-              options={getPlacemarkIcon(id, type)}
+              options={{
+                iconLayout: 'default#image',
+                iconImageHref: getPlacemarkIcon(id, type),
+                iconImageSize: [40, 50],
+                iconImageOffset: [-20, -50]
+              }}
               geometry={pos}
               onClick={showInfoHandler({ code, id })}
             />
