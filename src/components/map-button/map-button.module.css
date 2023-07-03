@@ -1,4 +1,5 @@
 .container {
+  border: none;
   pointer-events: all;
   cursor: pointer;
   width: 80px;

@@ -1,0 +1,29 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  bottom: 0;
+  position: absolute;
+  background-color: #3e3a3a8a;
+}
+
+.content {
+  background-color: #FFF; 
+  border-radius: 20px 20px 0 0;
+ 
+}
+.divider {
+  align-self: center;
+  cursor: grab;
+  width: 20vw;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  height: 5px;
+  background-color: #FFF;
+}
+.bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  position: absolute;
+}

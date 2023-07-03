@@ -1,24 +1,14 @@
 /* eslint-disable no-promise-executor-return */
 /* eslint-disable no-param-reassign */
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-export const addPlacemark = createAsyncThunk(
-  'addPlacemarkForm/addPlacemark',
-  async () => {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-  },
-);
+import { createSlice } from '@reduxjs/toolkit';
+import { addPlacemark } from '../../utils/map-api';
 
 const initialState = {
-
   requestLoading: false,
-
   isFormShow: false,
-
   coordinates: ['-', '-'],
   type: 'Парадная',
   code: '',
-
   isToastShow: false,
 };
 

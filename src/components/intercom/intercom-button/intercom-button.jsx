@@ -25,8 +25,13 @@ const IntercomButton = (props) => {
 };
 
 IntercomButton.propTypes = {
-  value: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
+  value: PropTypes.string,
+  icon: PropTypes.node,
+};
+
+IntercomButton.defaultProps = {
+  value: '',
+  icon: null,
 };
 
 export default IntercomButton;

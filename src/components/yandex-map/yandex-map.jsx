@@ -1,7 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
-import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
+import {
+  YMaps, Map, Placemark,
+} from '@pbe/react-yandex-maps';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import { isMobile } from 'react-device-detect';
 import styles from './yandex-map.module.css';
 import PlacemarkInfo from '../placemark-info/placemark-info';
 import AddPlacemarkForm from '../add-placemark-form/add-placemark-form';
@@ -11,9 +15,11 @@ import MapButton from '../map-button/map-button';
 import faqIcon from '../../assets/icons/faq.svg';
 import addIcon from '../../assets/icons/add.svg';
 import FAQ from '../faq/faq';
-import { getPlacemarks, setCode, showInfo } from '../../services/reducers/placemarkInfo';
+import { setCode, showInfo } from '../../services/reducers/placemarkInfo';
 import { hideFAQ, showFAQ } from '../../services/reducers/faq';
 import { setCoordinates, showForm } from '../../services/reducers/addPlacemarkForm';
+import { getAllPlacemarks } from '../../utils/map-api';
+import BottomDrawer from '../bottom-drawer/bottom-drawer';
 
 const defaultMapState = {
   center: [59.938567244979545, 30.315890079017883],
@@ -32,7 +38,7 @@ const YandexMap = () => {
   const currentPlacemarkID = useSelector((state) => state.placemarkInfo.placemarkID);
 
   useEffect(() => {
-    dispatch(getPlacemarks());
+    dispatch(getAllPlacemarks());
   }, []);
 
   const addObject = (e) => {
@@ -40,7 +46,7 @@ const YandexMap = () => {
   };
 
   const showInfoHandler = (param) => () => {
-    dispatch(showInfo(param.id));
+    dispatch(showInfo(param._id));
     dispatch(setCode(param.code));
   };
   const showFAQHandler = () => {
@@ -60,13 +66,16 @@ const YandexMap = () => {
     <YMaps>
       <Map onClick={addObject} className={styles.map} defaultState={defaultMapState}>
         {placemarks.map((placemark) => {
-          const { id, pos, code } = placemark;
+          const {
+            _id, lat, lng, code,
+          } = placemark;
+          const pos = [lat, lng];
           return (
             <Placemark
-              key={id}
-              options={getPlacemarkColor(id)}
+              key={_id}
+              options={getPlacemarkColor(_id)}
               geometry={pos}
-              onClick={showInfoHandler({ code, id })}
+              onClick={showInfoHandler({ code, _id })}
             />
           );
         })}
@@ -77,7 +86,6 @@ const YandexMap = () => {
               preset: 'islands#circleDotIcon',
               // Setting the placemark color (in RGB format).
               iconColor: '#5B4885',
-
               // preset: "islands#circleDotIcon",
               // Setting the placemark color (in RGB format).
               // iconColor: '#ff0000'
@@ -88,7 +96,25 @@ const YandexMap = () => {
             }}
           />
         )}
+        {/* <GeolocationControl options={{ position: { right: 10, top: 200 } }} /> */}
       </Map>
+      {
+      isMobile
+        ?
+          <div className={styles.mobileContainer} style={{pointerEvents:`${!isFAQShow?'none':''}`}}>
+            <MapButton icon={addIcon} onClick={showFormHandler} />
+            <MapButton icon={faqIcon} onClick={showFAQHandler} />
+            <AnimatePresence>
+              {isFAQShow&&<BottomDrawer>
+                <FAQ />
+              </BottomDrawer>}
+            </AnimatePresence>
+          
+            {isInfoShow&&<BottomDrawer>
+              <PlacemarkInfo />
+            </BottomDrawer>}
+          </div>
+        :
       <div className={styles.container}>
         <div className={styles.formContainer}>
           <AnimatePresence>
@@ -98,15 +124,12 @@ const YandexMap = () => {
         <div className={styles.popUpsContainer}>
           <div>
             <AnimatePresence>
-
               {isToastShow && <Toast />}
             </AnimatePresence>
-
           </div>
           <AnimatePresence>
             {isInfoShow && <PlacemarkInfo />}
           </AnimatePresence>
-
         </div>
         <div className={styles.rightContainer}>
           <div className={styles.mapButtonsContainer}>
@@ -115,12 +138,9 @@ const YandexMap = () => {
           </div>
           <AnimatePresence>
             {isFAQShow && <FAQ />}
-
           </AnimatePresence>
         </div>
-
-      </div>
-
+      </div>}
     </YMaps>
   );
 };
