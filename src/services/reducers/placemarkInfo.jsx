@@ -6,7 +6,9 @@ import { getAllPlacemarks } from '../../utils/map-api';
 const initialState = {
   getPlacemarksRequest: false,
   placemarks: [
-
+    { id: 1, pos: [59.93687192436499, 30.317392223419223], code: '1234', type: "Gate" },
+    { id: 2, pos: [59.93579116232591, 30.316882516933806], code: '123434', type: "Gate" },
+    { id: 3, pos: [59.93696431836826, 30.314474419507484], code: '123344', type: "Gate" },
   ],
   code: '',
   isInfoShow: false,

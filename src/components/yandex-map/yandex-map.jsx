@@ -21,6 +21,12 @@ import { setCoordinates, showForm } from '../../services/reducers/addPlacemarkFo
 import { getAllPlacemarks } from '../../utils/map-api';
 import BottomDrawer from '../bottom-drawer/bottom-drawer';
 
+import ico from '../../assets/icons/movePlacemark.png'
+import gatePlacemark from '../../assets/icons/gatePlacemark.png'
+import doorPlacemark from '../../assets/icons/doorPlacemark.png'
+import gatePlacemarkSelected from '../../assets/icons/gatePlacemarkSelected.png'
+import doorPlacemarkSelected from '../../assets/icons/doorPlacemarkSelected.png'
+
 const defaultMapState = {
   center: [59.938567244979545, 30.315890079017883],
   zoom: 15,
@@ -60,22 +66,35 @@ const YandexMap = () => {
     dispatch(showForm());
   };
 
-  const getPlacemarkColor = (id) => (id === currentPlacemarkID ? { iconColor: '#5B4885' } : { iconColor: '#4996F8' });
+  const getPlacemarkIcon = (id, type) => {
+    if (id === currentPlacemarkID && type === 'Gate') {
+      return gatePlacemarkSelected;
+    }
+    if (id === currentPlacemarkID && type === 'Door') {
+      return doorPlacemarkSelected;
+    }
+    if (type === 'Door') {
+      return doorPlacemark;
+    }
+    if (type === 'Gate') {
+      return gatePlacemark;
+    }
+  }
 
   return (
     <YMaps>
       <Map onClick={addObject} className={styles.map} defaultState={defaultMapState}>
         {placemarks.map((placemark) => {
           const {
-            _id, lat, lng, code,
+            id, pos, code, type,
           } = placemark;
-          const pos = [lat, lng];
+          //const pos = [lat, lng];
           return (
             <Placemark
-              key={_id}
-              options={getPlacemarkColor(_id)}
+              key={id}
+              options={getPlacemarkIcon(id, type)}
               geometry={pos}
-              onClick={showInfoHandler({ code, _id })}
+              onClick={showInfoHandler({ code, id })}
             />
           );
         })}
@@ -83,16 +102,10 @@ const YandexMap = () => {
           <Placemark
             geometry={coordinates}
             options={{
-              preset: 'islands#circleDotIcon',
-              // Setting the placemark color (in RGB format).
-              iconColor: '#5B4885',
-              // preset: "islands#circleDotIcon",
-              // Setting the placemark color (in RGB format).
-              // iconColor: '#ff0000'
-              // iconLayout:'default#image',
-              // iconImageHref: '../../assets/icons/movePlacemark.png',
-              // iconImageSize: [40, 40],
-              // iconImageOffset: [-20, -20]
+              iconLayout: 'default#image',
+              iconImageHref: ico,
+              iconImageSize: [40, 50],
+              iconImageOffset: [-20, -50]
             }}
           />
         )}
